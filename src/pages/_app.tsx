@@ -1,6 +1,15 @@
+// pages/_app.tsx
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+// pages/_app.tsx
+import { AppProps } from "next/app";
+import { LogProvider } from "@/context/LogContext";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <LogProvider>
+      <Component {...pageProps} />
+    </LogProvider>
+  );
 }
+
+export default MyApp;
