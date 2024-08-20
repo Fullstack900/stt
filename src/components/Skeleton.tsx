@@ -6,7 +6,7 @@ const Skeleton: React.FC = () => {
   return (
     <div className={classNames("relative", "w-[800px]", "h-[214px]")}>
       <Image
-        src="/images/Untitled.gif" // Path to your GIF image
+        src="/images/skeleton.gif"
         alt="Loading..."
         layout="fill"
         objectFit="cover"
