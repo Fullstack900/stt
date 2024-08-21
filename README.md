@@ -60,3 +60,4 @@ For the backend tasks, you'll need these additional steps:
 2. Install Docker with Docker Compose in your machine. The easiest way is to install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 3. Run the services in Docker Compose: `docker compose up`.
 4. Apply the existing migrations to your DB: `prisma migrate dev` ([docs](https://www.prisma.io/docs/orm/reference/prisma-cli-reference#migrate-dev))
+
