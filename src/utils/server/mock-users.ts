@@ -1,4 +1,4 @@
-import { Person, User } from "@/utils/common/person";
+import { Person, User } from "../../utils/common/person";
 
 export const mockUsers: { [key in Person]: User | null } = {
   [Person.PersonA]: {
@@ -10,6 +10,7 @@ export const mockUsers: { [key in Person]: User | null } = {
     title: "Backend Developer",
     followers: 15000,
     following: 500,
+    companyIds: [1, 2],
   },
   [Person.PersonB]: {
     backgroundImageUrl:
@@ -20,6 +21,7 @@ export const mockUsers: { [key in Person]: User | null } = {
     title: "Full Stack Developer",
     followers: 20000,
     following: 1000,
+    companyIds: [1, 2, 3],
   },
   [Person.PersonC]: null, // Always fails
 };

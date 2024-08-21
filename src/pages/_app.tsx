@@ -1,6 +1,16 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import { AppProps } from "next/app";
+import { LogProvider } from "@/context/LogContext";
+import { SessionProvider } from "next-auth/react";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  return (
+    <SessionProvider>
+      <LogProvider>
+        <Component {...pageProps} />
+      </LogProvider>
+    </SessionProvider>
+  );
 }
+
+export default MyApp;
