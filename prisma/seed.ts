@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { mockUsers } from "../src/utils/server/mock-users";
 import { mockCompanies } from "../src/utils/server/mock-companies";
 import { Person, User } from "../src/utils/common/person";
-import { CompanyName, Company } from "@/utils/common/company";
+import { CompanyName, Company } from "../src/utils/common/company";
 
 const prisma = new PrismaClient();
 
