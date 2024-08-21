@@ -1,3 +1,5 @@
+import { Company } from "./company";
+
 export type User = {
   backgroundImageUrl: string;
   profilePictureUrl: string;
@@ -5,6 +7,8 @@ export type User = {
   title: string;
   followers: number;
   following: number;
+  companyIds?: number[];
+  companies?: Company[];
 };
 
 export enum Person {

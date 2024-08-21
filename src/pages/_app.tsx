@@ -1,14 +1,15 @@
-// pages/_app.tsx
 import "@/styles/globals.css";
-// pages/_app.tsx
 import { AppProps } from "next/app";
 import { LogProvider } from "@/context/LogContext";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <LogProvider>
-      <Component {...pageProps} />
-    </LogProvider>
+    <SessionProvider>
+      <LogProvider>
+        <Component {...pageProps} />
+      </LogProvider>
+    </SessionProvider>
   );
 }
 

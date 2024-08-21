@@ -13,6 +13,8 @@ import Skeleton from "@/components/Skeleton";
 import { ProfileCard } from "@/components/ProfileCard";
 import useCurrentTime from "@/hooks/useCurrentTime";
 import useLogPersonDetails from "@/hooks/useLogPersonDetails"; // Import the custom hook
+import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +27,21 @@ export const MainLayout: FunctionComponent<
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [personData, setPersonData] = useState<any>(null);
-  const [isMounted, setIsMounted] = useState<boolean>(false); // State to check if component is mounted
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   const currentTime = useCurrentTime(); // Get current time
 
   useLogPersonDetails(personData, currentTime); // Use the custom hook
+
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth/signin"); // Redirect to the sign-in page
+    } else {
+    }
+  }, [status]);
 
   useEffect(() => {
     setIsMounted(true); // Set mounted to true after the component mounts
@@ -61,6 +73,10 @@ export const MainLayout: FunctionComponent<
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLogout = () => {
+    signOut({ callbackUrl: "/auth/signin" }); // Redirect to sign-in page after logout
   };
 
   return (
@@ -104,9 +120,17 @@ export const MainLayout: FunctionComponent<
             backgroundImageUrl={personData.backgroundImageUrl}
             followers={personData.followers}
             following={personData.following}
+            companies={personData.companies}
           />
         )}
       </div>
+
+      <button
+        className="absolute top-4 right-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </main>
   );
 };

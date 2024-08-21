@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { Company } from "@/utils/common/company";
 
 interface ProfileCardProps {
   name: string;
@@ -8,6 +9,7 @@ interface ProfileCardProps {
   backgroundImageUrl?: string; // URL for background image
   followers: number;
   following: number;
+  companies?: Company[];
 }
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({
@@ -17,6 +19,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   backgroundImageUrl,
   followers,
   following,
+  companies,
 }) => {
   return (
     <div
@@ -25,7 +28,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
         "bg-white border border-gray-300",
         "p-4 rounded-lg shadow-md",
         "w-[415px]",
-        "h-[335px]",
+        "min-h-[335px]",
       )}
     >
       {/* Background Image */}
@@ -70,6 +73,16 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
         <div className={classNames("text-gray-600 mt-2")}>
           <p>Followers: {followers}</p>
           <p>Following: {following}</p>
+          {companies && companies.length > 0 && (
+            <div className={classNames("mt-2")}>
+              <p>Companies:</p>
+              <ul className="list-disc list-inside ml-4">
+                {companies.map((company) => (
+                  <li key={company.id}>{company.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Buttons */}
