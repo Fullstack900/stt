@@ -42,14 +42,14 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
             opacity: 0.3, // Add some opacity for better contrast
             borderRadius: "inherit",
           }}
-        ></div>
+        />
       )}
 
       {/* Three Dots */}
       <div className={classNames("absolute top-8 right-5", "flex gap-1")}>
-        <div className={classNames("w-1 h-1 rounded-full bg-gray-400")}></div>
-        <div className={classNames("w-1 h-1 rounded-full bg-gray-400")}></div>
-        <div className={classNames("w-1 h-1 rounded-full bg-gray-400")}></div>
+        <div className={classNames("w-1 h-1 rounded-full bg-gray-400")} />
+        <div className={classNames("w-1 h-1 rounded-full bg-gray-400")} />
+        <div className={classNames("w-1 h-1 rounded-full bg-gray-400")} />
       </div>
 
       {/* Card Content */}

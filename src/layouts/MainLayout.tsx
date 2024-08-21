@@ -41,7 +41,7 @@ export const MainLayout: FunctionComponent<
       router.push("/auth/signin"); // Redirect to the sign-in page
     } else {
     }
-  }, [status]);
+  }, [status, router]);
 
   useEffect(() => {
     setIsMounted(true); // Set mounted to true after the component mounts

@@ -14,5 +14,5 @@ export default function useLogPersonDetails(
         `Person Details: ${JSON.stringify(personData)}, Current Time: ${currentTime}`,
       );
     }
-  }, [personData, enableLogs]); // Only re-run when personData or enableLogs changes
+  }, [personData, enableLogs, currentTime]); // Only re-run when personData or enableLogs changes
 }
